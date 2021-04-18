@@ -1,0 +1,8 @@
+#left-image,#center-image,#right-image{
+    height: 30%;
+    width: 30%;
+}
+
+main{
+    background-color: rgb(238, 245, 245);
+}
