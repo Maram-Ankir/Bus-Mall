@@ -10,7 +10,7 @@ var leftImage = document.getElementById('left-image');
 
 let container = document.getElementById('sec-one');
 let counts = 0;
-let maxAttempts = 5;
+let maxAttempts = 25;
 let leftIndex; //storing the img
 let rightIndex;
 let centerIndex;
