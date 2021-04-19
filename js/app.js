@@ -6,6 +6,7 @@ var productName = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum
 var leftImage = document.getElementById('left-image');
 var rightImage = document.getElementById('right-image');
 var centerImage = document.getElementById('center-image');
+let container = document.getElementById('sec-one');
 let counts = 0;
 let maxAttempts = 25;
 let leftIndex; //storing the img
@@ -56,10 +57,6 @@ function renderThreeImages() {
     rightIndex = genrateRandomIndex();
     centerIndex = genrateRandomIndex();
 
-    //   console.log(leftIndex);
-    //  console.log(rightIndex);
-    //  console.log(centerIndex);
-
     while (rightIndex === leftIndex) {
         leftIndex = genrateRandomIndex();   
     }
@@ -81,10 +78,7 @@ function renderThreeImages() {
 renderThreeImages();
 
 
-leftImage.addEventListener('click', handleClicking);
-rightImage.addEventListener('click', handleClicking);
-centerImage.addEventListener('click', handleClicking);
-
+container.addEventListener('click',handleClicking);
 
 function handleClicking(event) {
     //   console.log(event.target.id);
