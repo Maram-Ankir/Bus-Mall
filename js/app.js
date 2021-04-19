@@ -3,12 +3,14 @@
 
 var productImage = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
 var productName = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass']
-var leftImage = document.getElementById('left-image');
 var rightImage = document.getElementById('right-image');
 var centerImage = document.getElementById('center-image');
+var leftImage = document.getElementById('left-image');
+
+
 let container = document.getElementById('sec-one');
 let counts = 0;
-let maxAttempts = 5;
+let maxAttempts = 25;
 let leftIndex; //storing the img
 let rightIndex;
 let centerIndex;
@@ -16,6 +18,7 @@ let allImages = [];
 let arrOfnames = [];
 let arrOfVotes = [];
 let arrOfShown = [];
+var arrImages = [leftIndex,centerIndex,rightIndex ];
 
 
 
@@ -31,26 +34,6 @@ function Product(name, source) {
 // console.log(allImages);
 
 // // instances
-
-
-// new Product('bag','../img/bag.jpg' );
-// new Product('banana','../img/banana.jpg' );
-// new Product('bathroom','../img/bathroom.jpg' );
-// new Product('boots','../img/boots.jpg' );
-// new Product('bubblegum','../img/bubblegum.jpg' );
-// new Product('chair','../img/chair.jpg' );
-// new Product('cthulhu','../img/cthulhu.jpg' );
-// new Product('dog-duck','../img/dog-duck.jpg' );
-// new Product('dragon','../img/dragon.jpg' );
-// new Product('pet-sweep','../img/pet-sweep.jpg' );
-// new Product('scissors','../img/scissors.jpg' );
-// new Product('shark','../img/shark.jpg' );
-// new Product('sweep','../img/sweep.png' );
-// new Product('tauntaun','../img/tauntaun.jpg' );
-// new Product('unicorn','../img/unicorn.jpg' );
-// new Product('usb','../img/usb.gif' );
-// new Product('water-can','../img/water-can.jpg' );
-// new Product('wine-glass','../img/wine-glass.jpg' );
 for (var i = 0; i < productImage.length; i++) {
     new Product(productName[i], `../img/${productImage[i]}`);
 }
@@ -61,14 +44,21 @@ function renderThreeImages() {
     rightIndex = genrateRandomIndex();
     centerIndex = genrateRandomIndex();
 
-    while (rightIndex === leftIndex) {
-        leftIndex = genrateRandomIndex();   
-    }
-
-      while( rightIndex === centerIndex || leftIndex === centerIndex ){
+    while(leftIndex === rightIndex || leftIndex === centerIndex || centerIndex  === rightIndex ||arrImages.includes(leftIndex) || arrImages.includes(centerIndex)||arrImages.includes(rightIndex)){
+        leftIndex = genrateRandomIndex();
         centerIndex = genrateRandomIndex();
-      }
+        rightIndex = genrateRandomIndex();
 
+      };
+
+
+// console.log(leftIndex,centerIndex,rightIndex)
+
+   arrImages[0]=leftIndex;
+   arrImages[1]=centerIndex;
+   arrImages[2]=rightIndex;
+
+console.log(arrImages)
     leftImage.src = allImages[leftIndex].source;
     allImages[leftIndex].shown++;
     rightImage.src = allImages[rightIndex].source;
