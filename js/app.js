@@ -8,11 +8,14 @@ var rightImage = document.getElementById('right-image');
 var centerImage = document.getElementById('center-image');
 let container = document.getElementById('sec-one');
 let counts = 0;
-let maxAttempts = 25;
+let maxAttempts = 5;
 let leftIndex; //storing the img
 let rightIndex;
 let centerIndex;
 let allImages = [];
+let arrOfnames = [];
+let arrOfVotes = [];
+let arrOfShown = [];
 
 
 
@@ -22,9 +25,10 @@ function Product(name, source) {
     this.votes = 0;
     this.shown = 0;
     allImages.push(this);
+    arrOfnames.push(this.name);
 }
 
-console.log(allImages);
+// console.log(allImages);
 
 // // instances
 
@@ -50,7 +54,7 @@ console.log(allImages);
 for (var i = 0; i < productImage.length; i++) {
     new Product(productName[i], `../img/${productImage[i]}`);
 }
-console.log(allImages)
+// console.log(allImages)
 
 function renderThreeImages() {
     leftIndex = genrateRandomIndex();
@@ -71,7 +75,7 @@ function renderThreeImages() {
     allImages[rightIndex].shown++;
     centerImage.src = allImages[centerIndex].source;
     allImages[centerIndex].shown++;
-    console.log("shown" + allImages[centerIndex].shown)
+    // console.log("shown" + allImages[centerIndex].shown)
 
 }
 
@@ -84,8 +88,8 @@ function handleClicking(event) {
     //   console.log(event.target.id);
     counts++;
     if (maxAttempts >= counts) {
-        console.log(counts)
-        console.log(event.target)
+        // console.log(counts)
+        // console.log(event.target)
         if (event.target.id === 'left-image') {
             allImages[leftIndex].votes++;
         } else if (event.target.id === 'right-image') {
@@ -94,31 +98,36 @@ function handleClicking(event) {
             allImages[centerIndex].votes++;
         }
         renderThreeImages();
-        console.log(allImages);
+        // console.log(allImages);
     } else {
-       
-        leftImage.removeEventListener('click', handleClicking);
-        rightImage.removeEventListener('click', handleClicking);
-        centerImage.removeEventListener('click', handleClicking);
+    renderList();
+        barChart();
+
+    container.removeEventListener('click',handleClicking)
 
     }
 }
 
-let button = document .getElementById('btn');
-button.addEventListener('click',showList);
-function showList(){
-    renderList();
-    button.removeEventListener('click',showList);
-}
+// let button = document .getElementById('btn');
+// button.addEventListener('click',showList);
+// function showList(){
+//     renderList();
+//     button.removeEventListener('click',showList);
+// }
 
 
 function renderList() {
     let ul = document.getElementById('unList');
     for (let i = 0; i < allImages.length; i++) {
+        arrOfVotes.push(allImages[i].votes);
+        arrOfShown.push(allImages[i].shown);
         let li = document.createElement('li');
         ul.appendChild(li);
         li.textContent = `${allImages[i].name} it has ${allImages[i].votes} Votes ${allImages[i].shown} shown`;
     }
+    console.log(arrOfVotes)
+    console.log(arrOfShown)
+
 }
 
 function genrateRandomIndex() {
@@ -126,6 +135,33 @@ function genrateRandomIndex() {
 
 }
 
+function barChart(){
 
-// console.log(genrateRandomIndex());
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: arrOfnames,
+        datasets: [{
+            label: '# of Votes',
+            data: arrOfVotes,
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+             
+            ],
+            borderWidth: 1
+         }, {
+                label:'# of Shown',
+                data: arrOfShown,
+                backgroundColor:[
+                   'rgb(155, 99, 132)',
 
+                ],
+                borderWidth: 1
+              
+        }]
+    },
+    
+
+});
+}
