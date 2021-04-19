@@ -1,8 +1,17 @@
 #left-image,#center-image,#right-image{
-    height: 500px;
+    height: 450px;
     width: 30%;
+    margin-top: 100px;
 }
 
 main{
     background-color: rgb(238, 245, 245);
+}
+#sec-one{
+    text-align: center;
+}
+#myChart{
+    width: 70% !important;
+    height: 70% !important;
+    
 }
