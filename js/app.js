@@ -102,12 +102,19 @@ function handleClicking(event) {
         renderThreeImages();
         console.log(allImages);
     } else {
-        renderList()
+       
         leftImage.removeEventListener('click', handleClicking);
         rightImage.removeEventListener('click', handleClicking);
         centerImage.removeEventListener('click', handleClicking);
 
     }
+}
+
+let button = document .getElementById('btn');
+button.addEventListener('click',showList);
+function showList(){
+    renderList();
+    button.removeEventListener('click',showList);
 }
 
 
