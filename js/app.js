@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 
 var productImage = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
@@ -6,19 +6,17 @@ var productName = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum
 var rightImage = document.getElementById('right-image');
 var centerImage = document.getElementById('center-image');
 var leftImage = document.getElementById('left-image');
-
-
 let container = document.getElementById('sec-one');
+var arrImages = [leftIndex,centerIndex,rightIndex ];
 let counts = 0;
 let maxAttempts = 25;
-let leftIndex; //storing the img
+let leftIndex; 
 let rightIndex;
 let centerIndex;
 let allImages = [];
 let arrOfnames = [];
 let arrOfVotes = [];
 let arrOfShown = [];
-var arrImages = [leftIndex,centerIndex,rightIndex ];
 
 
 
