@@ -7,7 +7,6 @@ var rightImage = document.getElementById('right-image');
 var centerImage = document.getElementById('center-image');
 var leftImage = document.getElementById('left-image');
 let container = document.getElementById('sec-one');
-var arrImages = [leftIndex,centerIndex,rightIndex ];
 let counts = 0;
 let maxAttempts = 25;
 let leftIndex; 
@@ -17,6 +16,7 @@ let allImages = [];
 let arrOfnames = [];
 let arrOfVotes = [];
 let arrOfShown = [];
+var arrImages = [leftIndex,centerIndex,rightIndex ];
 
 
 
