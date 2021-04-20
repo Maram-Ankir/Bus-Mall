@@ -116,6 +116,7 @@ function renderList() {
     console.log(arrOfVotes)
     console.log(arrOfShown)
 
+    set();
 }
 
 function genrateRandomIndex() {
@@ -153,3 +154,19 @@ var myChart = new Chart(ctx, {
 
 });
 }
+
+
+function set() {
+    var productObjectStorage = JSON.stringify(allImages);
+    localStorage.setItem('set1', productObjectStorage);
+  }
+  
+  function get() {
+    var set1 = localStorage.getItem('set1');
+    if (set1 !== null) {
+        allImages = JSON.parse(set1);
+    //   renderList();
+     
+    }
+  }
+  get();
